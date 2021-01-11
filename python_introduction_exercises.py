@@ -1,5 +1,5 @@
 print ("Hello, World!")
 
-greeting = print ("Hello, World!")
+greeting = "Hello, World!"
 
 print (greeting) 
