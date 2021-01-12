@@ -42,11 +42,24 @@ student_enroll = not sch_conflict and not classFull
 
 student_enroll
 
-# 4. A product offer can be applied only if people buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
+# Ryan's code
+class_has_space = True
+schedule_works = True
+can_be_enrolled = class_has_space and schedule_works
+can_be_enrolled
+
+class_has_space = True
+schedule_conflicts = False
+can_be_enrolled = class_has_space and not schedule_conflicts
+can_be_enrolled
+
+# 4. A product offer can be applied only if people buys more than 2 items, and the offer has not expired. 
+# Premium members do not need to buy a specific amount of products.
 purchase2more = True
 offerexp = False
+premium = False
 
-applyoffer = purchase2more and not offerexp
+applyoffer =  not offerexp and (purchase2more or premium)
 
 applyoffer
 
@@ -72,4 +85,10 @@ maxid <= 20
 username != password
 
 # bonus neither the username or password can start or end with whitespace
-username[0] and username[-1] and password[0] and password[-1] != ' '
+username[0] != ' ' and username[-1] != ' ' and password[0] != ' ' and password[-1] != ' '
+
+#ryan's code
+password_has_no_beginning_or_ending_whitespace = password == password.strip()
+username_has_no_beginning_or_ending_whitespace = username == username.strip()
+password_has_no_beginning_or_ending_whitespace 
+username_has_no_beginning_or_ending_whitespace
