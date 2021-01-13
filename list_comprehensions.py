@@ -137,4 +137,4 @@ def prime(number):
 primes = [number for number in numbers if prime(number) == True]
 primes
 
-
+primes = [number for number in numbers if (prime(number) > 0 ) and ((number % (range(2, number - 1))) != 0)]
