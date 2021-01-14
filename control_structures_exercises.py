@@ -104,10 +104,11 @@ while i <= 15:
 # In[13]:
 
 
-n = 0
-while n <= 100:
-    print (n)
-    n += 2
+# standard convention to use variable i for iterations
+i = 0
+while i <= 100:
+    print (i)
+    i += 2
 
 
 # - a.5 Alter your loop to count backwards by 5's from 100 to -10.
@@ -115,10 +116,10 @@ while n <= 100:
 # In[14]:
 
 
-d = 100
-while d >= -10:
-    print (d)
-    d -= 5
+i = 100
+while i >= -10:
+    print (i)
+    i -= 5
 
 
 # - a.6 Create a while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000. Output should equal:
@@ -126,21 +127,33 @@ while d >= -10:
 # In[18]:
 
 
-a = 2
-while a <= 1000000:
-    print (a ** 2)
-    a += 1
+i = 2
+while i <= 1000000:
+    print (i ** 2)
+    i += 1
     
 
 
 # In[21]:
 
 
-a = 2
+i = 2
 
-while a <= 1000000:
-    print (a)
-    a = a ** 2
+while i <= 1000000:
+    print (i)
+    i = i ** 2
+
+
+# In[ ]:
+
+
+i = 2
+
+while i <= 1_000_000
+    print(i)
+    i *= i
+   # i = i*i
+   # i **=2
 
 
 # - a.7 Write a loop that uses print to create the output shown below.
@@ -149,10 +162,10 @@ while a <= 1000000:
 # In[25]:
 
 
-s = 100
-while s >= 5:
-    print (s)
-    s -= 5
+i = 100
+while i >= 5:
+    print (i)
+    i -= 5
     
 
 
@@ -164,11 +177,12 @@ while s >= 5:
 # In[34]:
 
 
-# newer version of str formatting
+# convert str to int
 user_no = int(input("Type a number."))
-
+#stop in range is exclusive
 for i in range(1, 11):
     print(f"{user_no} x {i} = {user_no * i}")
+    # newer version of str formatting
 
 
 # In[35]:
@@ -208,7 +222,7 @@ for i in range(1, 11):
 # In[36]:
 
 
-# me trying to math it out
+# me trying to math it out: it didn't work
 for num in range(1, 10):
     print(num * (11 ** (num - 1)))
 
@@ -216,6 +230,7 @@ for num in range(1, 10):
 # In[37]:
 
 
+#convert int to str 
 for num in range(1, 10):
     print(str(num) * num)
 
@@ -288,6 +303,30 @@ for n in range(1, 51):
     
 
 
+# In[10]:
+
+
+# ZACH'S CODE THAT'S TO THE POINT
+
+#while is a FOREVER loop
+while True:
+    digi = input("Type an odd number between 1 - 50.")
+    if digi.isdigit():
+        digi = int(digit)
+        if digi % 2 == 0:
+            continue
+        break
+i = 1
+while i <= 50:
+    if i == digi:
+        print(f"Yikes! Skipping number: {i}")
+        i += 2
+        continue
+    print(f"here is an odd number: {i}")
+    i += 2
+    
+
+
 # - d. The input function can be used to prompt for input and use that input in your python code. Prompt the user to enter a positive number and write a loop that counts from 0 to that number. (Hints: first make sure that the value the user entered is a valid number, also note that the input function returns a string, so you'll need to convert this to a numeric type.)
 
 # In[112]:
@@ -314,9 +353,35 @@ for d in range(0, int(num) + 1):
     
 
 
+# 1. continuously 
+#     1. prompt the user for a positive #
+#     2. check if the input is composed of digits, if so:
+#         1. convert to a numeric type
+#         1. check if the number is negative or 0, if so:
+#             1. go back to square one
+#         1. stop the loop (`break`)
+
+# In[13]:
+
+
+# ZACH'S CODE
+
+
+while True:
+    digi = input("Please type a Positive Integer: ")
+    if digi.isdigit():
+        digi = int(digit)
+        if digi <= 0:
+            continue
+        break
+        
+for i in range(0, digi + 1):
+    print(i)
+
+
 # - e. Write a program that prompts the user for a positive integer. Next write a loop that prints out the numbers from the number the user entered down to 1.
 
-# In[119]:
+# In[14]:
 
 
 nbr = input("Please type a Positive Integer: ")
@@ -336,8 +401,8 @@ while (int(nbr) < 0):
 #3rd loop        
 for n in range(int(nbr), 0, -1):
     print(n)
-    n -= 1
-    
+    #n -= 1
+    #not necessary
 
 
 # In[ ]:
@@ -369,6 +434,20 @@ for n in range(1, 101):
         print("Buzz")
         continue
     print(n)
+
+
+# In[17]:
+
+
+for i in range(1, 101):
+    if i % 5 == 0 and i % 3 ==0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)
 
 
 # ### 4. Display a table of powers.
@@ -411,8 +490,107 @@ while cont == "Y":
 print("Have a great day!")
 
 
-# In[ ]:
+# In[23]:
 
 
+# ZACH'S CODE
 
+number = int(input("What number would you like to go up to? "))
+
+print("number | squared | cubed")
+print("------ | ------- | -----")
+for i in range (1, number + 1):
+    #print(f"{i} | {i ** 2} |{i ** 3}")
+    print("%6d | %7d | %5d" % (i, i**2, i**3))
+
+
+# ### 5. Convert given number grades into letter grades.
+# 
+# - Prompt the user for a numerical grade from 0 to 100.
+# - Display the corresponding letter grade.
+# - Prompt the user to continue.
+# - Assume that the user will enter valid integers for the grades.
+# - The application should only continue if the user agrees to.
+# - Grade Ranges:
+# 
+#     - A : 100 - 88
+#     - B : 87 - 80
+#     - C : 79 - 67
+#     - D : 66 - 60
+#     - F : 59 - 0
+
+# In[24]:
+
+
+#input convert to int
+grade = int(input("Please type in a numerical grade. "))
+#grade = int(grade)
+
+# convert to letter
+if 88 <= grade <= 100:
+    print("Congrats, you have an A!")
+elif 80 <= grade <= 87:
+    print("Congrats, you have an B!")
+elif 67 <= grade <= 79:
+    print("Congrats, you have an C!")
+elif 60 <= grade <= 66:
+    print("May need some work, you have a D.")
+elif 0 <= grade <= 59:
+    print("May need some work, you have a F.")
+    
+
+
+# In[28]:
+
+
+#ZACH'S CODE FOR WHILE LOOP
+
+#running this loop forever
+while True:
+    #input convert to int
+    grade = int(input("Please type in a numerical grade. "))
+    #grade = int(grade)
+    
+    # convert to letter
+    if 88 <= grade <= 100:
+        print("Congrats, you have an A!")
+    elif 80 <= grade <= 87:
+        print("Congrats, you have an B!")
+    elif 67 <= grade <= 79:
+        print("Congrats, you have an C!")
+    elif 60 <= grade <= 66:
+        print("May need some work, you have a D.")
+    elif 0 <= grade <= 59:
+        print("May need some work, you have a F.")
+        
+    wants_to_cont = input("Do you want to continue? ")
+    if not wants_to_cont.lower().startswith("y"):
+            break
+
+
+# ### 6. Create a list of dictionaries where each dictionary represents a book that you have read. Each dictionary in the list should have the keys title, author, and genre. Loop through the list and print out information about each book.
+# 
+# - a. Prompt the user to enter a genre, then loop through your books list and print out the titles of all the books in that genre.
+
+# In[37]:
+
+
+books = [
+    {"title": "Neverwhere", "author": "Neil Gaiman", "genre": "SciFi"},
+    {"title": "The Stand", "author": "Stephen King", "genre": "SciFi"},
+    {"title": "Where the Crawdads Sing", "author": "Delia Owens", "genre": "Fiction"},
+    {"title": "Inferno", "author": "Dan Brown", "genre": "SciFi"},
+    {"title": "The Historian", "author": "Elizabeth Kostova", "genre": "Historical Fiction"},
+    {"title": "Hunger Games", "author": "Suzanne Collins", "genre": "Adult Fiction"},
+    {"title": "The Birth of the Pill", "author": "Johnathan Eig", "genre": "Non-Fiction"}
+]
+
+selected_genre = input("Please enter a genre: ")
+selected_books = [book for book in books if book['genre'] == selected_genre]
+
+for book in selected_books:
+    print("---")
+    print("title: {}".format(book['title']))
+    print("author: {}".format(book['author']))
+    print("genre: {}".format(book['genre']))
 
