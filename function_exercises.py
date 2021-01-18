@@ -600,22 +600,26 @@ twelveto24("09:45 am")
 
 def twelveto24(time):
     time = time.lower()
-    
-    #checking for midnight
-    if time[-2:] == "AM" and time[:2] == "12":
-        return "00" + time[3:5]
+
+     #checking for midnight
+    if time[-2:] == "am" and time[:2] == "12":
+        return "00" + time[2:5]
     #checking if am, return the reg time
-    elif time[-2:] == "AM":
+    elif time[-2:] == "am":
+        return time[0:-2]
+    #checking for noon
+    elif time[-2:] == "pm" and time[:2] == "12":
         return time[:-2]
-    #
-    elif time[-2:] == "PM" and time[:2] == "12":
-        return time[:-2]
-    #
+    #if it isn't midnight, noon, and am hrs, add 12 to the 
+    #1st 2 digits of the time inputted
     else:
         return str(int(time[:2]) + 12) + time[2:5]
-    
+
     
 twelveto24("09:45 AM")    
+
+
+twelveto24("01:45 PM") 
 
 
 # ### 2. 
@@ -629,7 +633,44 @@ twelveto24("09:45 AM")
 #     
 # 
 
-# In[ ]:
+def col_index(column_name):
+    column_name = column_name.lower()
+    
+    column_name = ord(column_name) - 96
+    return column_name
+    
+    
+col_index('z')
+
+#def col_index(column_name):
+#    column_name = column_name.lower()
+#    
+#    for i in column_name:
+#        if (column_name[2:].isalpha()):
+#            return ord(column_name[2:]) - 96        
+#        else:
+#            return (ord(column_name) - 96)
+#             
+#
+#    
+#    
+#col_index('aa')
+
+from openpyxl.utils.cell import column_index_from_string
+def col_index(column_name):
+    return(column_index_from_string(column_name))
+    
+col_index('ab')
+
+
+def excel_column_number(name):
+    name = name.lower()
+    n = 0
+    for c in name:
+        n = n * 26 + 1 + ord(c) - ord('a')
+    return n
+
+excel_column_number('aa')
 
 
 
